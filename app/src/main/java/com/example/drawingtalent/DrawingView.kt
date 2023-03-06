@@ -18,11 +18,31 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs){
         private var canvas : Canvas? = null
         //making the drawing persistent for the life cycle of activity
         private val mPaths = ArrayList<CustomPath>()
+        //store undo paths
+        private val mUndoPaths = ArrayList<CustomPath>()
+
 
 
         init{
             setUpDrawing()
         }
+    fun onClickUndo(){
+        if(mPaths.size > 0){
+            //remove last item from mPaths and add it to mUndoPath
+            mUndoPaths.add(mPaths.removeAt(mPaths.size-1))
+            //redraw the entire page
+            invalidate()
+        }
+    }
+
+    fun onClickRedo(){
+        if(mUndoPaths.size > 0){
+            //remove last item from mPaths and add it to mUndoPath
+            mPaths.add(mUndoPaths.removeAt(mUndoPaths.size-1))
+            //redraw the entire page
+            invalidate()
+        }
+    }
 
     private fun setUpDrawing(){
         mDrawPaint = Paint()
