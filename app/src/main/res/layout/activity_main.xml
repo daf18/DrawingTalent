@@ -173,6 +173,15 @@
         android:scaleType="fitXY"
         />
 
+    <ImageButton
+        android:id="@+id/ib_save"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/baseline_save_24"
+        android:scaleType="fitXY"
+        />
+
 </LinearLayout>
 
 
